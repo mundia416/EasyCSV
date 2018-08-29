@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         writer.writeNextRow(arrayOf("cellD1","cellD2","cellD3","cellD4","cellD5","cellD6"))
         writer.writeNextRow(arrayOf("cellE1","cellE2","cellE3","cellE4","cellE5","cellE6"))
         writer.writeNextRow(arrayOf("cellF1","cellF2","cellF3","cellF4","cellF5","cellF6"))
-        writer.export(writer.externalStorageDirectory+"/kjnj","test")
+        writer.writeToCell(9,"Heyyo")
+        writer.export(writer.externalStorageDirectory,"test2")
     }
 
 }

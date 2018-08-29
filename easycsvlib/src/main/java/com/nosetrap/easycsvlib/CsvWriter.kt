@@ -50,6 +50,7 @@ class CsvWriter(context: Context) {
     fun export(dir: String,filename: String): String{
         val path = dir+ File.separator+filename+".csv"
 
+        storage.createDirectory(dir,false)
         storage.createFile(path,stringBuilder.toString())
         return path
     }

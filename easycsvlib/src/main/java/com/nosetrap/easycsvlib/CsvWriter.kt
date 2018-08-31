@@ -75,9 +75,10 @@ class CsvWriter(context: Context) {
     /**
      * @return the current number of rows that will be in the csv when it gets exported
      */
-    fun getNumRows(): Int{
-        return  rows.count()
-    }
+    var numRows: Int = 0
+        get() = rows.count()
+    private set
+
     /**
      * write to the last cell of the current row
      */

@@ -128,6 +128,7 @@ class CsvWriter(context: Context) {
      */
     fun clear(){
         rows.clear()
+        rows.add(ArrayList())
         stringBuilder = StringBuilder()
     }
 

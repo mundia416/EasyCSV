@@ -28,6 +28,13 @@ class CsvWriter(context: Context) {
         writeRow(values)
     }
 
+    fun writeNextRow(values: List<String>){
+        newRow()
+        writeRow(values)
+    }
+
+
+
     /**
      * writes a value to a specific cell identified by @param index in the current row
      * @param the index of the cell counting from left to right
@@ -42,12 +49,38 @@ class CsvWriter(context: Context) {
         lastRow[index] = value
     }
 
+    fun writeToCell(index:Int, value: Int){
+        writeToCell(index,value.toString())
+    }
+
+    fun writeToCell(index:Int, value: Double){
+        writeToCell(index,value.toString())
+    }
+
+    fun writeToCell(index:Int, value: Boolean){
+        val bool = if(value) "True" else "False"
+        writeToCell(index,bool)
+    }
+
+    fun writeToCell(index:Int, value: Long){
+        writeToCell(index,value.toString())
+    }
+
+    fun writeToCell(index:Int, value: Float){
+        writeToCell(index,value.toString())
+    }
+
     /**
      * writes the values to the current row
      */
     fun writeRow(values: Array<String>){
-       rows[rows.lastIndex].addAll(values)
+        rows[rows.lastIndex].addAll(values)
     }
+
+    fun writeRow(values: List<String>){
+        rows[rows.lastIndex].addAll(values)
+    }
+
     /**
      * goes to a new row
      */

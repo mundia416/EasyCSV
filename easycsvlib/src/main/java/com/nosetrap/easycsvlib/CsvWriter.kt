@@ -12,6 +12,8 @@ class CsvWriter(context: Context) {
     //the rows in the csv,each arraylist represents a row of values
     private var rows = ArrayList<ArrayList<String>>()
     private val comma = ","
+    private val trueString = "True"
+    private val falseString = "False"
 
     val externalStorageDirectory = storage.externalStorageDirectory
 
@@ -58,7 +60,7 @@ class CsvWriter(context: Context) {
     }
 
     fun writeToCell(index:Int, value: Boolean){
-        val bool = if(value) "True" else "False"
+        val bool = if(value) trueString else falseString
         writeToCell(index,bool)
     }
 
@@ -71,6 +73,37 @@ class CsvWriter(context: Context) {
     }
 
     /**
+     * @return the current number of rows that will be in the csv when it gets exported
+     */
+    fun getNumRows(): Int{
+        return  rows.count()
+    }
+    /**
+     * write to the last cell of the current row
+     */
+    fun writeCell(value:String){
+        val lastIndex = rows.lastIndex
+        rows[lastIndex].add(value)
+    }
+
+    fun writeCell(value: Boolean){
+        val bool = if(value) trueString else falseString
+        writeCell(bool)
+    }
+
+    fun writeCell(value: Double) {
+        writeCell(value.toString())
+    }
+
+    fun writeCell(value: Int) {
+        writeCell(value.toString())
+    }
+
+    fun writeCell(value: Float) {
+        writeCell(value.toString())
+    }
+
+        /**
      * writes the values to the current row
      */
     fun writeRow(values: Array<String>){
